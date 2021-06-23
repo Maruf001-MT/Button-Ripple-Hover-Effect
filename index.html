@@ -1,0 +1,65 @@
+<!DOCTYPE.html>
+<html>
+<head>
+   <title></title>
+ <style>
+ *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+ }
+body{
+  background:#343636;
+     display:flex;
+   align-items:center;
+   justify-content:center;
+   min-height:100vh;
+}
+.btn{
+  text-decoration:none;
+  font-size:1.5rem;
+  padding:20px 30px;
+  background:#20282a;
+  border-radius:15px;
+  color:white;
+  letter-spacing:5px;
+  position:relative;
+  overflow:hidden;
+}
+.btn span{
+  position:relative;
+  z-index:1;
+}
+.btn::before{
+  content:'';
+  position:absolute;
+  top:var(--y);
+  left:var(--x);
+  transform:translate(-50%,-50%);
+  width:0px;
+  height:0px;
+  border-radius:50%;
+  background:#00adff;
+  transition:width 0.5s,height 0.5s;
+}
+.btn:hover::before{
+width:350px;
+height:350px;
+}
+ </style>
+</head>
+<body>
+   <a href="#" class="btn"><span>BUTTON</span></a>
+   
+   <script>
+     const btn=document.querySelector(".btn");
+     btn.onmousemove=function(e){
+       const x=e.pageX-btn.offsetLeft;
+       const y=e.pageY-btn.offsetTop;
+       
+       btn.style.setProperty('--x',x+'px');
+       btn.style.setProperty('--y',y+'px');
+     }
+   </script>
+</body>
+</html>
